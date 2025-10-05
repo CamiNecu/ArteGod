@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block title %}Galería de Imágenes - ArteGOD{% endblock %}
 
@@ -47,7 +48,7 @@
   <div class="row mb-4">
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+        <img src="{% static 'core/assets/img/Mona_Lisa,_by_Leonardo_da_Vinci.jpg' %}"
              class="card-img-top" alt="Monalisa">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">La Gioconda</h5>
@@ -60,7 +61,7 @@
 
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+        <img src="{% static 'core/assets/img/NocheEstrellada.jpg' %}"
              class="card-img-top" alt="Noche Estrellada">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">La noche estrellada</h5>
@@ -73,7 +74,7 @@
 
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/1920px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg"
+        <img src="{% static 'core/assets/img/CreacionDeAdam.jpg' %}"
              class="card-img-top" alt="Creación de Adán">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">La creación de Adán</h5>
@@ -89,7 +90,7 @@
   <div class="row">
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Las_Meninas_01.jpg"
+        <img src="{% static 'core/assets/img/LasMeninas.jpg' %}"
              class="card-img-top" alt="Las meninas">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">Las meninas</h5>
@@ -102,7 +103,7 @@
 
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg"
+        <img src="{% static 'core/assets/img/TheScream.jpg' %}"
              class="card-img-top" alt="El grito">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">El grito</h5>
@@ -115,7 +116,7 @@
 
     <div class="col-12 col-md-4 mb-4">
       <div class="card h-100">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Mural_del_Gernika.jpg"
+        <img src="{% static 'core/assets/img/MuraldelGernika.jpg' %}"
              class="card-img-top" alt="Guernica">
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">Guernica</h5>

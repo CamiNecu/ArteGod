@@ -1,0 +1,73 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Noticias - ArteGOD{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'noticias/style2.css' %}">
+
+<div class="container py-5">
+  <h1 class="text-center mb-5 display-5 fw-bold border-bottom pb-3">Noticias!</h1>
+
+  <div class="row gy-5">
+    {% for n in page_obj %}
+      <div class="col-12 col-md-10 mx-auto">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+          {% if n.imagen %}
+            <img src="{{ n.imagen.url }}" class="card-img-top noticia-img" alt="{{ n.titulo }}">
+          {% endif %}
+          <div class="card-body p-4">
+            <h3 class="card-title text-primary fw-bold">{{ n.titulo }}</h3>
+            <p class="card-text mt-3 text-muted">{{ n.detalle }}</p>
+            <p class="text-end text-secondary small mt-3 mb-0">
+              🕒 Publicado el {{ n.created|date:"d/m/Y H:i" }}<br>
+              🔄 Actualizado el {{ n.updated|date:"d/m/Y H:i" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">No hay noticias disponibles por el momento.</p>
+    {% endfor %}
+  </div>
+
+  <!-- PAGINACIÓN -->
+  <div class="d-flex justify-content-center mt-5">
+    <nav aria-label="Paginación de noticias">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Anterior</span>
+          </li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <li class="page-item active">
+              <span class="page-link">{{ num }}</span>
+            </li>
+          {% else %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Siguiente</span>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</div>
+{% endblock %}

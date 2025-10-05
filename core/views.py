@@ -5,12 +5,17 @@ def home(request):
         {
             'titulo': 'La joven de la perla',
             'autor': 'Johannes Vermeer',
-            'imagen': 'https://i.blogs.es/03ac8b/la-joven-de-la-perla/1366_2000.jpeg'
+            'imagen': 'core/assets/img/JovenPerla.jpeg'
         },
         {
             'titulo': 'Autorretrato de Vincent Van Gogh (1889)',
             'autor': 'Vincent van Gogh',
-            'imagen': 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project.jpg'
+            'imagen': 'core/assets/img/VincentSelf1889.jpg'
+        },
+        {
+            'titulo': 'Der Kuss',
+            'autor': 'Gustav Klimt',
+            'imagen': 'core/assets/img/TheKiss.jpg'
         },
     ]
     return render(request, "core/home.html", {'obras': obras})

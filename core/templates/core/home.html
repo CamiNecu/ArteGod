@@ -1,4 +1,5 @@
 {% extends 'core/base.html' %}
+{% load static %}
 
 {% block title %}Inicio - ArteGOD{% endblock %}
 
@@ -30,7 +31,7 @@
             <a href="/galeriaimagenes/" class="btn btn-dark btn-lg mt-3">Ver Galeria de Imagenes</a>
         </div>
         <div class="col-md-6">
-            <img src="https://i0.wp.com/hotbook.mx/wp-content/uploads/2014/10/hotbook-94.jpg?w=1024&ssl=1"
+            <img src="{% static 'core/assets/img/RelogDerr.png' %}"
                  class="img-fluid rounded shadow" alt="Obra de arte">
         </div>
     </div>
@@ -42,7 +43,7 @@
     {% for obra in obras %}
       <div class="col">
         <div class="card h-100 shadow-sm">
-          <img src="{{ obra.imagen }}" class="card-img-top" alt="{{ obra.titulo }}">
+          <img src="{% static obra.imagen %}" class="card-img-top" alt="{{ obra.titulo }}">
           <div class="card-body">
             <h5 class="card-title">{{ obra.titulo }}</h5>
             <p class="card-text text-muted">{{ obra.autor }}</p>
@@ -55,36 +56,6 @@
       </div>
     {% endfor %}
   </div>
-</section>
-
-<!-- Bloque: Noticias o Eventos -->
-<section class="mb-5">
-  <h2 class="mb-3">Noticias y Eventos</h2>
-
-  <div class="card mb-3 shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title">Recuperan en Argentina una pintura antigua presuntamente robada por nazis durante la Segunda Guerra Mundial</h5>
-      <h6 class="card-subtitle mb-2 text-muted">03/09/2025</h6>
-      <p class="card-text">La Justicia argentina recuperó una pintura del siglo XVII robada por los nazis durante la Segunda Guerra Mundial. La obra, "Retrato de una dama" de Giuseppe Ghislandi, fue identificada en una fotografía de una casa en venta en Mar del Plata. La pintura pertenecía al coleccionista judío Jacques Goudstikker y había sido saqueada por Friedrich Kadgien, un alto oficial nazi. Tras una investigación, la obra fue entregada por la familia Kadgien a la fiscalía argentina.</p>
-    </div>
-  </div>
-
-  <div class="card mb-3 shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title">Esta artista acaba de pintar con aerosol una plaza pública en Suiza</h5>
-      <h6 class="card-subtitle mb-2 text-muted">19/06/2025</h6>
-      <p class="card-text">La artista alemana Katharina Grosse ha transformado la Messeplatz en Basilea, Suiza, con una intervención artística a gran escala utilizando pintura en aerosol. Su obra abarca desde bancos hasta una fuente y un reloj, creando una experiencia inmersiva para los visitantes de Art Basel</p>
-    </div>
-  </div>
-
-  <div class="card mb-3 shadow-sm">
-    <div class="card-body">
-      <h5 class="card-title">Las principales controversias en el arte durante 2024</h5>
-      <h6 class="card-subtitle mb-2 text-muted">26/12/2024</h6>
-      <p class="card-text">El año 2024 estuvo marcado por diversas polémicas en el mundo del arte. Entre ellas destacan la venta de una banana pegada a la pared por más de 6 millones de dólares, la controversia generada por el uso de inteligencia artificial en la creación de obras literarias y fotográficas, y el debate sobre la representación de la realeza británica en retratos oficiales. Además, se registraron actos de vandalismo en obras de arte y patrimonio cultural en nombre de la protesta, y casos de fraude en el ámbito del asesoramiento artístico.</p>
-    </div>
-  </div>
-
 </section>
 
 </div>
