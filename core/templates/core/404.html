@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+
+{% block title %}Página no encontrada - ArteGOD{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-3">Ups, no encontramos lo que buscas</h1>
+        <p class="lead mb-4">
+            La página que intentas visitar ya no existe, cambió de dirección o nunca estuvo disponible.
+        </p>
+        <div class="mb-4">
+            <a class="btn btn-dark btn-lg me-2" href="{% url 'core:home' %}">Volver al inicio</a>
+            <a class="btn btn-outline-secondary btn-lg" href="{% url 'noticias:lista' %}">Ver noticias recientes</a>
+        </div>
+        {% if categorias_destacadas %}
+            <p class="text-muted">Quizás te interese explorar estas categorías:</p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                {% for categoria in categorias_destacadas %}
+                    <a href="{% url 'noticias:lista' %}?categoria={{ categoria.slug }}" class="badge text-bg-dark">{{ categoria.nombre }}</a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
