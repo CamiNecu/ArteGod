@@ -48,5 +48,5 @@ def galimagenes(request):
     return render(request, "core/galimagenes.html")
 
 
-def custom_404(request, exception):
+def custom_404(request, exception=None):
     return render(request, "core/404.html", status=404)

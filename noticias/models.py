@@ -6,9 +6,11 @@ from django.utils.text import slugify
 class Autor(models.Model):
     nombre = models.CharField(max_length=120, verbose_name="Nombre")
     cargo = models.CharField(
-        max_length=120, blank=True, verbose_name="Cargo o rol"
+        max_length=120,
+        blank=True,
+        verbose_name="Cargo o rol",
     )
-    biografia = models.TextField(blank=True, verbose_name="Biografía")
+    biografia = models.TextField(blank=True, verbose_name="Biografia")
     correo = models.EmailField(blank=True, verbose_name="Correo de contacto")
     created = models.DateTimeField(auto_now_add=True, verbose_name="Creado")
     updated = models.DateTimeField(auto_now=True, verbose_name="Actualizado")
@@ -25,18 +27,18 @@ class Autor(models.Model):
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100, unique=True, verbose_name="Nombre")
     slug = models.SlugField(max_length=120, unique=True, verbose_name="Slug")
-    descripcion = models.TextField(blank=True, verbose_name="Descripción")
+    descripcion = models.TextField(blank=True, verbose_name="Descripcion")
     color = models.CharField(
         max_length=20,
         blank=True,
-        help_text="Clase CSS opcional para destacar la categoría",
+        help_text="Clase CSS opcional para destacar la categoria",
     )
     created = models.DateTimeField(auto_now_add=True, verbose_name="Creado")
     updated = models.DateTimeField(auto_now=True, verbose_name="Actualizado")
 
     class Meta:
-        verbose_name = "categoría"
-        verbose_name_plural = "categorías"
+        verbose_name = "categoria"
+        verbose_name_plural = "categorias"
         ordering = ("nombre",)
 
     def __str__(self) -> str:
@@ -49,12 +51,15 @@ class Categoria(models.Model):
 
 
 class Noticia(models.Model):
-    titulo = models.CharField(max_length=150, verbose_name="Título")
+    titulo = models.CharField(max_length=150, verbose_name="Titulo")
     slug = models.SlugField(max_length=180, unique=True, blank=True, verbose_name="Slug")
     resumen = models.CharField(max_length=255, blank=True, verbose_name="Resumen")
     detalle = models.TextField(verbose_name="Contenido")
     imagen = models.ImageField(
-        upload_to="noticias", verbose_name="Imagen", blank=True, null=True
+        upload_to="noticias",
+        verbose_name="Imagen",
+        blank=True,
+        null=True,
     )
     autor = models.ForeignKey(
         Autor,
@@ -68,7 +73,7 @@ class Noticia(models.Model):
         on_delete=models.SET_NULL,
         related_name="noticias",
         null=True,
-        verbose_name="Categoría",
+        verbose_name="Categoria",
     )
     es_destacada = models.BooleanField(default=False, verbose_name="Destacada")
     publicado = models.DateTimeField(default=timezone.now, verbose_name="Publicado el")

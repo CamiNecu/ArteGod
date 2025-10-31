@@ -5,30 +5,29 @@
 
 {% block content %}
 
-<!--fuente-->
+<!-- fuente -->
 <link href="https://fonts.googleapis.com/css2?family=Kite+One&display=swap" rel="stylesheet">
 
 <style>
   .titulo-bienvenida {
     font-family: 'Kite One', sans-serif;
-    font-size: 2.5rem; 
-    color: #222;       
+    font-size: 2.5rem;
+    color: #222;
   }
 </style>
 
 <div class="container py-5">
 
-    <!-- Sección de bienvenida -->
+    <!-- Seccion de bienvenida -->
     <div class="row align-items-center mb-5">
         <div class="col-md-6">
             <h2 class="mb-3 titulo-bienvenida">Bienvenido a ArteGOD</h2>
             <p class="lead">
-                Explora nuestra Galeria digital de arte donde encontrarás obras únicas 
-                de artistas emergentes y consagrados. Queremos acercar el arte a todos 
+                Explora nuestra galeria digital de arte donde encontraras obras unicas
+                de artistas emergentes y consagrados. Queremos acercar el arte a todos
                 mediante una experiencia digital interactiva.
             </p>
-            <!-- Botón temporal sin enlace a otra página -->
-            <a href="/galeriaimagenes/" class="btn btn-dark btn-lg mt-3">Ver Galeria de Imagenes</a>
+            <a href="{% url 'core:galeria_imagenes' %}" class="btn btn-dark btn-lg mt-3">Ver galeria de imagenes</a>
         </div>
         <div class="col-md-6">
             <img src="{% static 'core/assets/img/RelogDerr.png' %}"
@@ -36,9 +35,8 @@
         </div>
     </div>
 
-<!-- Bloque dinámico: Obras destacadas -->
 <section class="mb-5">
-  <h2 class="mb-4">Obras Destacadas</h2>
+  <h2 class="mb-4">Obras destacadas</h2>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for obra in obras %}
       <div class="col">
@@ -60,7 +58,7 @@
 
 {% if noticias_destacadas %}
 <section class="mb-5">
-  <h2 class="mb-4">Noticias Destacadas</h2>
+  <h2 class="mb-4">Noticias destacadas</h2>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for noticia in noticias_destacadas %}
       <div class="col">

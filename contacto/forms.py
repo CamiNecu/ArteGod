@@ -1,18 +1,18 @@
 from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Column, Div, Field, HTML, Layout, Row, Submit
+from crispy_forms.layout import Column, Div, Field, HTML, Layout, Row
 
 
 class ContactoForm(forms.Form):
     nombre = forms.CharField(label="Nombre completo", max_length=120)
-    correo = forms.EmailField(label="Correo electrónico")
+    correo = forms.EmailField(label="Correo electronico")
     motivo = forms.ChoiceField(
         label="Motivo de contacto",
         choices=(
-            ("", "Selecciona una opción"),
+            ("", "Selecciona una opcion"),
             ("consulta", "Consulta general"),
-            ("obra", "Interés en una obra"),
-            ("artista", "Colaboración con artistas"),
+            ("obra", "Interes en una obra"),
+            ("artista", "Colaboracion con artistas"),
             ("otro", "Otro"),
         ),
     )
@@ -41,11 +41,10 @@ class ContactoForm(forms.Form):
                 Column(Field("acepta_politica"), css_class="col-md-6 mb-3 d-flex align-items-end"),
             ),
             Div("mensaje", css_class="mb-3"),
-            Submit("submit", "Enviar mensaje", css_class="btn btn-dark btn-lg"),
             HTML(
                 """
                 <p class="small text-muted mt-3 mb-0">
-                    Tu información se utiliza solo para responder a tu solicitud. No compartiremos tus datos con terceros.
+                    Tu informacion se utiliza solo para responder a tu solicitud. No compartiremos tus datos con terceros.
                 </p>
                 """
             ),

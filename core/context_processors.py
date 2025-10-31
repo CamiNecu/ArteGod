@@ -9,7 +9,7 @@ def site_context(request):
         "brand": "ArteGOD",
         "email": "artegod@gmail.com",
         "phone": "+56 8 000 42958",
-        "address": "Autop. Concepción - Talcahuano 7421, Talcahuano, Bío Bío",
+        "address": "Autop. Concepcion - Talcahuano 7421, Talcahuano, Bio Bio",
     }
     return {
         "site_info": site_info,

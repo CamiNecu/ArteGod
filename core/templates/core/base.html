@@ -31,7 +31,7 @@
             <a class="navbar-brand" href="{% url 'core:home' %}">
                 <img src="{% static 'core/assets/img/ArteGod.jpeg' %}" alt="ArteGOD" width="160" height="70">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegacion">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -40,13 +40,13 @@
                         <a class="nav-link{% if request.resolver_match.url_name == 'home' %} active{% endif %}" href="{% url 'core:home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{% if request.resolver_match.url_name == 'quienes' %} active{% endif %}" href="{% url 'core:quienes' %}">Quiénes somos</a>
+                        <a class="nav-link{% if request.resolver_match.url_name == 'quienes' %} active{% endif %}" href="{% url 'core:quienes' %}">Quienes somos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link{% if request.resolver_match.url_name == 'preguntas_frecuentes' %} active{% endif %}" href="{% url 'core:preguntas_frecuentes' %}">Preguntas frecuentes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{% if request.resolver_match.url_name == 'galeria_imagenes' %} active{% endif %}" href="{% url 'core:galeria_imagenes' %}">Galería de imágenes</a>
+                        <a class="nav-link{% if request.resolver_match.url_name == 'galeria_imagenes' %} active{% endif %}" href="{% url 'core:galeria_imagenes' %}">Galeria de imagenes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link{% if request.resolver_match.app_name == 'noticias' %} active{% endif %}" href="{% url 'noticias:lista' %}">Noticias</a>
@@ -63,7 +63,7 @@
              style="background: url('{% block bgr %}{% static "core/assets/img/fire.gif" %}{% endblock %}') no-repeat center center; background-size: cover;">
         <div class="container">
             <h1 class="display-4 fw-bold">{{ site_info.brand }}</h1>
-            <p class="lead">Un espacio digital para descubrir y coleccionar arte que te hará decir GOD</p>
+            <p class="lead">Un espacio digital para descubrir y coleccionar arte que te hara decir GOD</p>
         </div>
     </section>
     <main>
@@ -82,17 +82,17 @@
     <footer>
         <div class="container">
             <p class="text-start">&copy; {{ current_year }} {{ site_info.brand }} - Todos los derechos reservados</p>
-            <p class="text-start">Dirección: {{ site_info.address }}</p>
-            <p class="text-end">Contáctanos: {{ site_info.email }} · {{ site_info.phone }}</p>
+            <p class="text-start">Direccion: {{ site_info.address }}</p>
+            <p class="text-end">Contactanos: {{ site_info.email }} · {{ site_info.phone }}</p>
             <div class="social-icons">
-                <span>Síguenos en:</span>
+                <span>Siguenos en:</span>
                 <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a> |
                 <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a> |
                 <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
             </div>
             {% if categorias_destacadas %}
                 <div class="mt-3">
-                    <strong>Categorías destacadas:</strong>
+                    <strong>Categorias destacadas:</strong>
                     {% for categoria in categorias_destacadas %}
                         <a href="{% url 'noticias:lista' %}?categoria={{ categoria.slug }}" class="badge text-bg-dark">{{ categoria.nombre }}</a>
                     {% endfor %}

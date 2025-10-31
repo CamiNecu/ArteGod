@@ -11,7 +11,7 @@
     <h1 class="display-5 fw-bold mb-3 mb-md-0">Noticias</h1>
     <div class="text-muted">
       {% if filtros_activos %}
-        {{ total_filtradas }} resultado{{ total_filtradas|pluralize }} después de aplicar filtros.
+        {{ total_filtradas }} resultado{{ total_filtradas|pluralize }} despues de aplicar filtros.
       {% else %}
         Mostrando {{ total_filtradas }} noticia{{ total_filtradas|pluralize }} recientes.
       {% endif %}
@@ -20,7 +20,7 @@
 
   <form class="row g-3 bg-light rounded-4 p-3 p-md-4 mb-5" method="get">
     <div class="col-md-5">
-      <label for="categoria" class="form-label fw-semibold">Categoría</label>
+      <label for="categoria" class="form-label fw-semibold">Categoria</label>
       <select class="form-select" id="categoria" name="categoria">
         <option value="">Todas</option>
         {% for categoria in categorias %}
@@ -83,7 +83,7 @@
   </div>
 
   <div class="d-flex justify-content-center mt-5">
-    <nav aria-label="Paginación de noticias">
+    <nav aria-label="Paginacion de noticias">
       <ul class="pagination">
         {% if page_obj.has_previous %}
           <li class="page-item">
