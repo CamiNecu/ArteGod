@@ -151,17 +151,15 @@ REST_FRAMEWORK = {
 
 # Correo (Mailtrap sandbox)
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = os.getenv("MAILTRAP_HOST", "sandbox.smtp.mailtrap.io")
-EMAIL_HOST_USER = os.getenv("MAILTRAP_USER", "")
-EMAIL_HOST_PASSWORD = os.getenv("MAILTRAP_PASSWORD", "")
-EMAIL_PORT = int(os.getenv("MAILTRAP_PORT", "2525"))
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'a63d4e3c259715'
+EMAIL_HOST_PASSWORD = 'd8b85a964be202'
+EMAIL_PORT = '2525'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "ArteGOD <no-reply@artegod.local>")
+DEFAULT_FROM_EMAIL = "ArteGOD <no-reply@artegod.local>"
 
 # Endpoint local de API de noticias para el cliente interno
 API_NOTICIAS_ENDPOINT = os.getenv(
     "API_NOTICIAS_ENDPOINT",
     "http://127.0.0.1:8000/api/noticias/",
 )
-# Correo destino para formulario de contacto (Mailtrap)
-CONTACT_EMAIL_TO = os.getenv("CONTACT_EMAIL_TO", os.getenv("MAILTRAP_TO", ""))

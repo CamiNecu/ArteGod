@@ -22,7 +22,10 @@ def formulario_contacto(request):
                 f"Acepta ser contactado: {'Si' if data['acepta_politica'] else 'No'}\n\n"
                 f"Mensaje:\n{data['mensaje']}"
             )
-            destinatario = getattr(settings, "CONTACT_EMAIL_TO", None) or settings.EMAIL_HOST_USER
+
+            # Destinatario ficticio, Mailtrap lo capturará
+            destinatario = "test@example.com"
+
             try:
                 send_mail(
                     asunto,
@@ -33,18 +36,18 @@ def formulario_contacto(request):
                 )
                 messages.success(
                     request,
-                    "Gracias por escribirnos. Enviamos tu mensaje al buz\u00f3n configurado en Mailtrap.",
+                    "Gracias por escribirnos. Tu mensaje fue enviado al buzón de pruebas de Mailtrap.",
                 )
                 return redirect(f"{reverse('contacto:formulario')}?enviado=1")
-            except Exception:
+            except Exception as e:
                 messages.error(
                     request,
-                    "No pudimos enviar tu mensaje. Verifica la configuracion de Mailtrap e intenta de nuevo.",
+                    f"No pudimos enviar tu mensaje. Verifica la configuración de Mailtrap. Error: {str(e)}",
                 )
         else:
             messages.error(
                 request,
-                "Revisa la informacion ingresada, algunos datos necesitan tu atencion.",
+                "Revisa la información ingresada, algunos datos necesitan tu atención.",
             )
 
     if request.GET.get("enviado"):

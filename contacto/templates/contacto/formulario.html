@@ -8,13 +8,27 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
+
                 <div class="mb-4 text-center">
                     <h1 class="display-6 fw-bold">Conversemos</h1>
                     <p class="lead text-muted">
-                        Completa el formulario y cuentanos como podemos ayudarte. Nuestro equipo se pondra en contacto contigo pronto.
+                        Completa el formulario y cuéntanos cómo podemos ayudarte. Nuestro equipo se pondrá en contacto contigo pronto.
                     </p>
                 </div>
 
+                <!-- MOSTRAR MENSAJES -->
+                {% if messages %}
+                    <div class="mb-3">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- FORMULARIO -->
                 <form method="post" novalidate>
                     {% csrf_token %}
                     {{ form|crispy }}
