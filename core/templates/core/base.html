@@ -54,6 +54,18 @@
                     <li class="nav-item">
                         <a class="nav-link{% if request.resolver_match.app_name == 'contacto' %} active{% endif %}" href="{% url 'contacto:formulario' %}">Contacto</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.resolver_match.app_name == 'api_client' %} active{% endif %}" href="{% url 'api_client:noticias_api' %}">API local</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle{% if request.resolver_match.app_name == 'accounts' %} active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Registros
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'accounts:registro_editor' %}">Registro editor</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:registro_reportero' %}">Registro reportero</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -83,7 +95,7 @@
         <div class="container">
             <p class="text-start">&copy; {{ current_year }} {{ site_info.brand }} - Todos los derechos reservados</p>
             <p class="text-start">Direccion: {{ site_info.address }}</p>
-            <p class="text-end">Contactanos: {{ site_info.email }} · {{ site_info.phone }}</p>
+            <p class="text-end">Contactanos: {{ site_info.email }} | {{ site_info.phone }}</p>
             <div class="social-icons">
                 <span>Siguenos en:</span>
                 <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a> |

@@ -40,9 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework',
     'core',
     'noticias',
     'contacto',
+    'api',
+    'api_client',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +142,26 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # Crispy Forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = ("bootstrap5",)
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Django REST Framework (sin auth para la API publica)
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [],
+    "DEFAULT_PERMISSION_CLASSES": [],
+}
+
+# Correo (Mailtrap sandbox)
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.getenv("MAILTRAP_HOST", "sandbox.smtp.mailtrap.io")
+EMAIL_HOST_USER = os.getenv("MAILTRAP_USER", "")
+EMAIL_HOST_PASSWORD = os.getenv("MAILTRAP_PASSWORD", "")
+EMAIL_PORT = int(os.getenv("MAILTRAP_PORT", "2525"))
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "ArteGOD <no-reply@artegod.local>")
+
+# Endpoint local de API de noticias para el cliente interno
+API_NOTICIAS_ENDPOINT = os.getenv(
+    "API_NOTICIAS_ENDPOINT",
+    "http://127.0.0.1:8000/api/noticias/",
+)
+# Correo destino para formulario de contacto (Mailtrap)
+CONTACT_EMAIL_TO = os.getenv("CONTACT_EMAIL_TO", os.getenv("MAILTRAP_TO", ""))

@@ -1,0 +1,41 @@
+{% extends "core/base.html" %}
+
+{% block title %}Registro {{ rol }} - ArteGOD{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h1 class="h3 mb-3">Registro de {{ rol }}</h1>
+                        <p class="text-muted small">
+                            Se creara el usuario y se asignara al grupo {{ rol }} con permisos sobre noticias.
+                        </p>
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                            {% endif %}
+                            {% for field in form %}
+                                <div class="mb-3">
+                                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    {{ field }}
+                                    {% if field.help_text %}
+                                        <div class="form-text">{{ field.help_text|safe }}</div>
+                                    {% endif %}
+                                    {% if field.errors %}
+                                        <div class="text-danger small">{{ field.errors|striptags }}</div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                            <button type="submit" class="btn btn-dark w-100">Crear usuario {{ rol }}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
