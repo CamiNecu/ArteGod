@@ -1,0 +1,123 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Noticias - ArteGOD{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'noticias/style2.css' %}">
+
+<div class="container py-5">
+  <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4">
+    <h1 class="display-5 fw-bold mb-3 mb-md-0">Noticias</h1>
+    <div class="text-muted">
+      {% if filtros_activos %}
+        {{ total_filtradas }} resultado{{ total_filtradas|pluralize }} despues de aplicar filtros.
+      {% else %}
+        Mostrando {{ total_filtradas }} noticia{{ total_filtradas|pluralize }} recientes.
+      {% endif %}
+    </div>
+  </div>
+
+  <form class="row g-3 bg-light rounded-4 p-3 p-md-4 mb-5" method="get">
+    <div class="col-md-5">
+      <label for="categoria" class="form-label fw-semibold">Categoria</label>
+      <select class="form-select" id="categoria" name="categoria">
+        <option value="">Todas</option>
+        {% for categoria in categorias %}
+          <option value="{{ categoria.slug }}" {% if categoria.slug == categoria_seleccionada %}selected{% endif %}>
+            {{ categoria.nombre }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-5">
+      <label for="autor" class="form-label fw-semibold">Autor</label>
+      <select class="form-select" id="autor" name="autor">
+        <option value="">Todos</option>
+        {% for autor in autores %}
+          <option value="{{ autor.id }}" {% if autor.id|stringformat:"s" == autor_seleccionado %}selected{% endif %}>
+            {{ autor.nombre }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-2 d-flex align-items-end gap-2">
+      <button type="submit" class="btn btn-dark w-100">Filtrar</button>
+      {% if filtros_activos %}
+        <a class="btn btn-outline-secondary" href="{% url 'noticias:lista' %}">Limpiar</a>
+      {% endif %}
+    </div>
+  </form>
+
+  <div class="row gy-5">
+    {% for noticia in page_obj %}
+      <div class="col-12 col-md-10 mx-auto">
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden h-100">
+          {% if noticia.imagen %}
+            <img src="{{ noticia.imagen.url }}" class="card-img-top noticia-img" alt="{{ noticia.titulo }}">
+          {% endif %}
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="badge bg-dark">{{ noticia.categoria }}</span>
+              {% if noticia.es_destacada %}
+                <span class="badge bg-warning text-dark">Destacada</span>
+              {% endif %}
+            </div>
+            <h3 class="card-title text-primary fw-bold">{{ noticia.titulo }}</h3>
+            <p class="card-text mt-3 text-muted">
+              {% if noticia.resumen %}
+                {{ noticia.resumen }}
+              {% else %}
+                {{ noticia.detalle|truncatewords:40 }}
+              {% endif %}
+            </p>
+            <p class="text-end text-secondary small mt-3 mb-0">
+              {{ noticia.autor }} · Publicado el {{ noticia.publicado|date:"d/m/Y H:i" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-muted">No hay noticias disponibles por el momento.</p>
+    {% endfor %}
+  </div>
+
+  <div class="d-flex justify-content-center mt-5">
+    <nav aria-label="Paginacion de noticias">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?{% if querystring %}{{ querystring }}&amp;{% endif %}page={{ page_obj.previous_page_number }}">Anterior</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Anterior</span>
+          </li>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <li class="page-item active">
+              <span class="page-link">{{ num }}</span>
+            </li>
+          {% else %}
+            <li class="page-item">
+              <a class="page-link" href="?{% if querystring %}{{ querystring }}&amp;{% endif %}page={{ num }}">{{ num }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?{% if querystring %}{{ querystring }}&amp;{% endif %}page={{ page_obj.next_page_number }}">Siguiente</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <span class="page-link">Siguiente</span>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</div>
+{% endblock %}

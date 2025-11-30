@@ -1,0 +1,85 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Inicio - ArteGOD{% endblock %}
+
+{% block content %}
+
+<!-- fuente -->
+<link href="https://fonts.googleapis.com/css2?family=Kite+One&display=swap" rel="stylesheet">
+
+<style>
+  .titulo-bienvenida {
+    font-family: 'Kite One', sans-serif;
+    font-size: 2.5rem;
+    color: #222;
+  }
+</style>
+
+<div class="container py-5">
+
+    <!-- Seccion de bienvenida -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <h2 class="mb-3 titulo-bienvenida">Bienvenido a ArteGOD</h2>
+            <p class="lead">
+                Explora nuestra galeria digital de arte donde encontraras obras unicas
+                de artistas emergentes y consagrados. Queremos acercar el arte a todos
+                mediante una experiencia digital interactiva.
+            </p>
+            <a href="{% url 'core:galeria_imagenes' %}" class="btn btn-dark btn-lg mt-3">Ver galeria de imagenes</a>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'core/assets/img/RelogDerr.png' %}"
+                 class="img-fluid rounded shadow" alt="Obra de arte">
+        </div>
+    </div>
+
+<section class="mb-5">
+  <h2 class="mb-4">Obras destacadas</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for obra in obras %}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="{% static obra.imagen %}" class="card-img-top" alt="{{ obra.titulo }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ obra.titulo }}</h5>
+            <p class="card-text text-muted">{{ obra.autor }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col">
+        <p>No hay obras destacadas disponibles.</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% if noticias_destacadas %}
+<section class="mb-5">
+  <h2 class="mb-4">Noticias destacadas</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for noticia in noticias_destacadas %}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          {% if noticia.imagen %}
+            <img src="{{ noticia.imagen.url }}" class="card-img-top" alt="{{ noticia.titulo }}">
+          {% endif %}
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-dark mb-2">{{ noticia.categoria }}</span>
+            <h5 class="card-title">{{ noticia.titulo }}</h5>
+            <p class="card-text text-muted">{{ noticia.resumen }}</p>
+            <p class="mt-auto text-end text-secondary small mb-0">
+              {{ noticia.autor }} · {{ noticia.publicado|date:"d M Y" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+</div>
+{% endblock %}

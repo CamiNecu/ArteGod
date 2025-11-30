@@ -163,3 +163,6 @@ API_NOTICIAS_ENDPOINT = os.getenv(
     "API_NOTICIAS_ENDPOINT",
     "http://127.0.0.1:8000/api/noticias/",
 )
+
+# Codigo de Invitacion
+ACCOUNTS_INVITE_CODE = "ARTEGOD2025"

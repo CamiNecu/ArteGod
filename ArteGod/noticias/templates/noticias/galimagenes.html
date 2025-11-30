@@ -1,0 +1,131 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Galería de Imágenes - ArteGOD{% endblock %}
+
+{% block content %}
+
+<!-- Fuente letra -->
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+<style>
+  .card-img-top {
+    height: 300px;
+    object-fit: contain; 
+    object-position: center;
+    background-color: #f8f9fa; 
+  }
+  
+  .card-img-auto {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+  }
+  
+  .card {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Estilo para el título con Kaushan Script */
+  .titulo-galeria {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 2.8rem;
+    color: #222;
+  }
+</style>
+
+<div class="container py-4">
+  <h2 class="text-center mb-5 titulo-galeria">Galería de Obras Maestras</h2>
+  
+  <h5 class="text-center mb-5">Esta es una selección de nuestras creaciones originales, elaboradas por el equipo de ArteGOD. Cada pintura es única y está disponible en distintos tamaños y técnicas.</h5>
+
+  <div class="row mb-4">
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
+             class="card-img-top" alt="Monalisa">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">La Gioconda</h5>
+          <p class="card-text">Óleo sobre lienzo — 90 x 60 cm</p> 
+          <p class="card-text">Artista: Camilo Neculhual</p>
+          <p class="card-text">Retrato icónico del Renacimiento Inacapino que destaca por la misteriosa sonrisa de la modelo y la técnica del sfumato. Es considerada una de las obras más famosas y enigmáticas de la historia del arte.</p>          
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+             class="card-img-top" alt="Noche Estrellada">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">La noche estrellada</h5>
+          <p class="card-text">Acrílico sobre lienzo — 100 x 70 cm</p> 
+          <p class="card-text">Artista: Nicolas Cisternas</p>
+          <p class="card-text">Pintada desde la ventana de su habitación en Chiguayante, refleja un cielo turbulento lleno de energía y movimiento. Es una de las obras más representativas del postimpresionismo Penquista.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg/1920px-Michelangelo_-_Creation_of_Adam_%28cropped%29.jpg"
+             class="card-img-top" alt="Creación de Adán">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">La creación de Adán</h5>
+          <p class="card-text">Acuarela sobre papel — 80 x 40 cm</p> 
+          <p class="card-text">Artista: Camilo Neculhual</p>
+          <p class="card-text">Parte del techo de la Capilla Sixtina, muestra el momento en que Dios le da vida a Adán. Es una obra maestra de Camilo Neculhual y un símbolo de la unión entre lo divino y lo humano.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Las_Meninas_01.jpg"
+             class="card-img-top" alt="Las meninas">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Las meninas</h5>
+          <p class="card-text">Acrílico con texturas — 85 x 55 cm</p> 
+          <p class="card-text">Artista: Nicolas Cisternas</p>
+          <p class="card-text">Una compleja escena en la corte española donde la infanta Margarita es retratada junto a sus damas. La pintura juega con la perspectiva, la luz y el papel del propio artista dentro de la obra.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg"
+             class="card-img-top" alt="El grito">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">El grito</h5>
+          <p class="card-text">Óleo sobre lienzo — 110 x 70 cm</p> 
+          <p class="card-text">Artista: Rolando Canifru</p>
+          <p class="card-text">Obra expresionista que representa la angustia y el miedo existencial del ser humano. La figura central, con un gesto de desesperación, se ha convertido en un ícono cultural penquista.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Mural_del_Gernika.jpg"
+             class="card-img-top" alt="Guernica">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">Guernica</h5>
+          <p class="card-text">Óleo sobre lienzo — 130 x 70 cm</p> 
+          <p class="card-text">Artista: Rolando Canifru</p>
+          <p class="card-text">Pintura monumental que denuncia los horrores de la guerra, inspirada en el bombardeo de Guernica durante la Guerra Civil Española. Su estilo cubista transmite dolor, caos y sufrimiento colectivo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
